@@ -27,6 +27,7 @@ def main():
     print (size)
     for i, line in enumerate(lines[1:-1]):
         print (i, line)
+    fh2.close()
     # I construct a class to do the testing
     #tester = LEDTester(size)
 
@@ -35,7 +36,9 @@ def main():
         #tester.execute_command(line)
 
     # at the end, count the number of lights that are on
-   # print("{} {}".format(filename, tester.count_lighting()))
+    # print("{} {}".format(filename, tester.count_lighting()))
     #return
+main()    
+    
 if __name__ == '__main__':
     pass
