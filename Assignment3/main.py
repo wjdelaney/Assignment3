@@ -27,6 +27,13 @@ def main():
     print (size)
     for i, line in enumerate(lines[1:-1]):
         print (i, line)
+    
+        m = re.match(r'(((\D+ \D+)|(\D+)) (.?\d+)(.?)(.?\d+) through (.?\d+)(.?)(.?\d+))',line)
+        print("matched: ", m is not None, m.groups())
+        mtest = m is not None
+        #print(m.group(2),m.group(5), m.group(7), m.group(8), m.group(10))
+        cmd,x1,y1,x2,y2 = m.group(2),m.group(5),m.group(7),m.group(8),m.group(10)
+        print(cmd,":",x1,y1,x2,y2,mtest)
     fh2.close()
     # I construct a class to do the testing
     #tester = LEDTester(size)
@@ -39,6 +46,7 @@ def main():
     # print("{} {}".format(filename, tester.count_lighting()))
     #return
 main()    
+    
     
 if __name__ == '__main__':
     pass
