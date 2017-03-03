@@ -97,8 +97,8 @@ def main():
     # at the end, count the number of lights that are on
     # print("{} {}".format(filename, tester.count_lighting()))
     #return
-main()    
+   
     
     
 if __name__ == '__main__':
-    pass
+    main()
