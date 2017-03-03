@@ -8,4 +8,4 @@ setup(name="Assignment3",
       author_email="william.delaney1@ucdconnect.ie",
       licence="GPL3",
       packages=['Assignment3'],
-      entry_points={'console_scripts':['comp30670_Assignment3=Assignment3.main:main']})
+      entry_points={'console_scripts':['solve_led=Assignment3.main:main']})

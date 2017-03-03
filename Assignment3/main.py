@@ -56,7 +56,7 @@ def main():
     size = int(lines[0])
     #Initialize array with all zeros.
     array2d = [ [0]*size for _ in range(size) ]
-    print (size)
+    #print (size)
     for i, line in enumerate(lines[1:-1]):
         #print (i, line)
         # Regex expression to find the command and co-ordinates
@@ -72,7 +72,7 @@ def main():
         x2 = filter(x2)
         y1 = filter(y1)
         y2 = filter(y2)
-        print (x2-x1,y2-y1,mtest)
+        #print (x2-x1,y2-y1,mtest)
         #print(cmd,":",x1,y1,x2,y2,mtest)
         # execute
         if cmd == "turn on":
@@ -85,7 +85,7 @@ def main():
             x1=x1
         # unknown command: do nothing
     total = sum(x.count(1) for x in array2d)
-    print (total)
+    print (filename, " ", total , " leds are lit")
     # I construct a class to do the testing
     #tester = LEDTester(size)
 
