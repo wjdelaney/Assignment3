@@ -1,0 +1,3 @@
+[console_scripts]
+solve_led = Assignment3.main:main
+
