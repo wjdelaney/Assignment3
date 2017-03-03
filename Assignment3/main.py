@@ -43,7 +43,7 @@ def main():
     parser.add_argument('--input', help='input help')
     args = parser.parse_args()
 
-    # now the filename arguments is in args.input
+    # filename contains the arg inputs
     filename = args.input
     #Open that file and read it in to the buffer
     fh2 =urllib.request.urlopen(filename)
@@ -51,31 +51,30 @@ def main():
 
     # break the buffer into lines
     lines = buffer.split('\n')
-    # the first line is the size of the LED array
-
+    
+    #Line 0 contains the X & Y lengths (array size).
     size = int(lines[0])
     #Initialize array with all zeros.
     array2d = [ [0]*size for _ in range(size) ]
-    #print (size)
+    #Loop through lines one at a time
     for i, line in enumerate(lines[1:-1]):
         #print (i, line)
         # Regex expression to find the command and co-ordinates
         m = re.match(r'(((\D+ \D+)|(\D+)) (.?\d+)(.?)(.?\d+) through (.?\d+)(.?)(-?\d+))',line)
         #print("matched: ", m is not None, m.groups())
-        #print(m.group(10))
         # Is this a valid matched line of input? skip line if false.
         mtest = m is not None
         if (mtest == 'false'):
             continue
         #Assign variables to the command & co-ordinates
         cmd,x1,y1,x2,y2 = m.group(2),m.group(5),m.group(7),m.group(8),m.group(10)
+        #sanitize the co-ordinates by calling filter function.
         x1 = filter(x1)
         x2 = filter(x2)
         y1 = filter(y1)
         y2 = filter(y2)
-        #print (x2-x1,y2-y1,mtest)
-        #print(cmd,":",x1,y1,x2,y2,mtest)
-        # execute
+
+        # Run the commands
         if cmd == "turn on":
             turn_on(x1,x2,y1,y2)
         elif cmd == "turn off":
@@ -84,10 +83,10 @@ def main():
             switch(x1,x2,y1,y2)
         else:
             x1=x1
-        
+    #Print the filename and total leds that are lit   
     total = sum(x.count(1) for x in array2d)
     print (filename, " ", total , " leds are lit")
 
-   
+#Call main function from script  
 if __name__ == '__main__':
     main()
