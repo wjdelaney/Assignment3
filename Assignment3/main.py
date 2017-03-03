@@ -7,15 +7,25 @@ import sys
 import argparse
 import urllib.request
 import re
-
+# rectify out of bounds co-ordinates.
 def filter(x):
     x = int(x)
     x = 0 if (x < 0) else x
     x = size if (x > size) else x
     return x
-    
+ 
+#Turn on function, change array values to a 1.
+def turn_on(x1,x2,y1,y2):  
     pass
-def main():    
+#Turn off function, change array values to a 0.
+def turn_off(x1,x2,y1,y2):  
+    pass
+#Switch 0 to 1 OR 1 to 0 in the defined area.
+def switch(x1,x2,y1,y2):  
+    pass
+def main():  
+    global size
+    global array2d  
     # parse the command line arguments to get the input filename
     parser = argparse.ArgumentParser()
     parser.add_argument('--input', help='input help')
@@ -30,9 +40,10 @@ def main():
     # break the buffer into lines
     lines = buffer.split('\n')
     # the first line is the size of the LED array
-    global size
-    size = int(lines[0])
 
+    size = int(lines[0])
+    #Initialize array with all zeros.
+    array2d = [ [0]*size for _ in range(size) ]
     print (size)
     for i, line in enumerate(lines[1:-1]):
         print (i, line)
@@ -50,7 +61,17 @@ def main():
         filter(y1)
         filter(y2)
         
-        print(cmd,":",x1,y1,x2,y2,mtest)
+        #print(cmd,":",x1,y1,x2,y2,mtest)
+        # execute
+        if cmd == "turn on":
+            turn_on(x1,x2,y1,y2)
+        elif cmd == "turn off":
+            turn_off(x1,x2,y1,y2)
+        elif cmd == "switch":
+            switch(x1,x2,y1,y2)
+        else:
+        # unknown command: do nothing
+ 
     fh2.close()
     # I construct a class to do the testing
     #tester = LEDTester(size)
