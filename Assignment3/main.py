@@ -36,8 +36,8 @@ def switch(x1,x2,y1,y2):
                 array2d[i][j]=1
                 
 def main():  
-    global size
-    global array2d  
+    global size # length of x and y
+    global array2d  # create a 2 dimensional list
     # parse the command line arguments to get the input filename
     parser = argparse.ArgumentParser()
     parser.add_argument('--input', help='input help')
@@ -84,21 +84,10 @@ def main():
             switch(x1,x2,y1,y2)
         else:
             x1=x1
-        # unknown command: do nothing
+        
     total = sum(x.count(1) for x in array2d)
     print (filename, " ", total , " leds are lit")
-    # I construct a class to do the testing
-    #tester = LEDTester(size)
 
-    # now loop over each line (except the first) and process the commands (turn on/off, switch)
-    #for i, line in enumerate(lines[1:]):
-        #tester.execute_command(line)
-
-    # at the end, count the number of lights that are on
-    # print("{} {}".format(filename, tester.count_lighting()))
-    #return
    
-    
-    
 if __name__ == '__main__':
     main()
