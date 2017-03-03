@@ -60,7 +60,7 @@ def main():
     for i, line in enumerate(lines[1:-1]):
         #print (i, line)
         # Regex expression to find the command and co-ordinates
-        m = re.match(r'(((\D+ \D+)|(\D+)) (.?\d+)(.?)(.?\d+) through (.?\d+)(.+)(.?\d+))',line)
+        m = re.match(r'(((\D+ \D+)|(\D+)) (.?\d+)(.?)(.?\d+) through (.?\d+)(.?)(-?\d+))',line)
         #print("matched: ", m is not None, m.groups())
         #print(m.group(10))
         # Is this a valid matched line of input? skip line if false.
